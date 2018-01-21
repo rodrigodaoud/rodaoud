@@ -32,6 +32,7 @@ function main(){
 
         // eventListener to startButton
         startGameButton.addEventListener('click', startButtonClick);
+
     }
 
     function deleteStartScreen(){
@@ -50,7 +51,7 @@ function main(){
         
         start = 'game';
         game = new Game(mainScreen);
-
+        
         window.setTimeout(function(){
             deleteGameScreen();
             buildGameOverScreen();

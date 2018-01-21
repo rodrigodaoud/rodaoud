@@ -25,6 +25,8 @@ function Game(mainScreen){
             gameRow.appendChild(gameColumn);
         }
     }
+
+    self.palyer = new Player(gameDiv);
     
 
 Game.prototype.destroy = function(){
