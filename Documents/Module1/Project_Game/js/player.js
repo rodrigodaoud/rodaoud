@@ -1,18 +1,14 @@
 'use strict'
 
-function Player(mainScreen){
+function Player(x, y){
     var self = this;
 
+    self.x = x;
+    self.y = y;
     self.direction = null;
+    
 
-    self.mapArray = document.querySelectorAll('.game-column');
-    self.mapArray[65].style.background = ('blue');
-    self.mapArray[55].style.background = ('red');
-    self.mapArray[60].style.background = ('yellow');
-    self.mapArray[60].style.borderRadius = ('40px');
-
-    self.playerOne = self.mapArray[60];
-    self.playerTwo = self.mapArray[65];
+}
 
 Player.prototype.setDirection = function(direction){
     var self = this;
@@ -21,15 +17,26 @@ Player.prototype.setDirection = function(direction){
 
 }
 
-Player.prototype.update = function(){
+Player.prototype.update = function(direction){
     var self = this;
 
-    // switch(self.direction){
-    //     case 'E':
-    //     self.x += 10;
+    switch(self.direction){
+        case 'E':
+            self.x -= 1;
+            break;
+        case 'S':
+            self.y += 1;
+            break;
+        case 'W':
+            self.x += 1;
+            break;
+        case 'N':
+            self.y -= 1;
+            break;
 
-    // }
+    }
+
+    console.log(self.x, self.y);
 }
 
 
-}

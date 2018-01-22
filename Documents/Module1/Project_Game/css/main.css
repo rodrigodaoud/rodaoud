@@ -1,6 +1,9 @@
- /* div, body{
+ .game-column{
   border: 1px solid white;
-} */
+}
+h1{
+  border: 1px solid white;
+}
 
 /* ---- reset ---- */
 
@@ -59,7 +62,6 @@ padding: 20px;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-
   background-repeat: no-repeat;
   background-size: 800px 800px;
 }

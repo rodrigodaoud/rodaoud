@@ -2,60 +2,98 @@
 
 function main(){
 
-
     var mainScreen = document.querySelector('#main-screen');
-    var start;
-    var game;
-
-    var gameDiv = document.createElement('div');
-    gameDiv.setAttribute('class', 'game-screen');
-    mainScreen.appendChild(gameDiv);
+    var stage;
+   
+    var bodyBackground = document.querySelector('body');
+    var snd = new Audio('./css/sounds/coins.wav');
 
     // ------------------ START SCREEN
-    var bodyBackground = document.querySelector('body');
-    var startScreen;
+
+    var startScreen
     var startGameButton;
-    var startButtonClick = function(){
-        var snd = new Audio('./css/sounds/coins.wav');
+    var instructionsButton;
+
+    var startButtonClick = function(){ 
         snd.play();
         deleteStartScreen();
-        buildGameScreen();
-        gameDiv.style.display = 'inline-block';
-        bodyBackground.style.background = 'black';
+        buildGameScreen(); 
+
+    };
+
+    var startInstructionsButton = function(){ 
+        console.log('Instructions button')
     };
 
     function buildStartScreen (){
-        start = 'start-screen';
+        stage = 'start-screen';
 
-        startScreen = document.querySelector('.start-screen');
-        startGameButton = document.querySelector('.start-button button');
+        // -- creeating dom elements
+        // -- main-div
+        startScreen = document.createElement('div');
+        startScreen.classList.add('start-screen');
+        mainScreen.appendChild(startScreen);
+            // -- title
+        var gameTitle = document.createElement('div');
+        gameTitle.classList.add('game-title');
+        startScreen.appendChild(gameTitle);
+
+        var title = document.createElement('h1');
+        title.innerHTML = 'LUCKY COMBO' + '<br/>' + 'THE GAME';
+        gameTitle.appendChild(title);
+        // -- buttons
+        var buttons = document.createElement('div');
+        buttons.classList.add('start-button');
+        startScreen.appendChild(buttons);
+
+        var startButtonDiv = document.createElement('div');
+        startButtonDiv.classList.add('play');
+        buttons.appendChild(startButtonDiv);
+
+        startGameButton = document.createElement('button');
+        startGameButton.innerHTML = 'PLAY';
+        startButtonDiv.appendChild(startGameButton);
+        
+        var instrButtonDiv = document.createElement('div');
+        instrButtonDiv.classList.add('inst');
+        buttons.appendChild(instrButtonDiv);
+
+        instructionsButton = document.createElement('button');
+        instructionsButton.innerHTML = 'INSTRUCTIONS';
+        instrButtonDiv.appendChild(instructionsButton);
 
         // eventListener to startButton
         startGameButton.addEventListener('click', startButtonClick);
+        instructionsButton.addEventListener('click', startInstructionsButton);
+        
 
     }
 
     function deleteStartScreen(){
         //remove eventListerner from startButton
         startGameButton.removeEventListener('click', startButtonClick);
+        instructionsButton.removeEventListener('click', startInstructionsButton);
         // remove startScreen
         startScreen.remove();
     }
 
     // ------------------ GAME SCREEN
 
-        
-        gameDiv = document.querySelector('.game-screen');
-
+    var game;
+    var gameDiv;   
+    
     function buildGameScreen(){
-        
-        start = 'game';
+        stage = 'game';
+
+        bodyBackground.style.background = 'black';
+
+
         game = new Game(mainScreen);
-        
-        window.setTimeout(function(){
-            deleteGameScreen();
-            buildGameOverScreen();
-        },2000);
+
+        // window.setTimeout(function(){
+        //     deleteGameScreen();
+        //     buildGameOverScreen();
+        // },2000);
     }
 
     function deleteGameScreen(){
@@ -64,20 +102,58 @@ function main(){
 
     // ---------------- GAME OVER SCREEN
 
-    var gameOverScreen = document.querySelector('.gameover-screen');
-    var playAgainButton = document.querySelector('.playagain-button button');
-    function playAgainButtonClick(){
+    // -- creating dom elements
+
+
+    var gameOverScreen;
+    var playAgainButton
+    var playAgainButtonClick = function (){
         deleteGameOverScreen();
         buildGameScreen();
     }
 
     function buildGameOverScreen(){
-        start = 'gameOver'
+        stage = 'gameOver'
+
+        bodyBackground.style.background = "url('./css/img/source3.gif') no-repeat";
+        bodyBackground.style.backgroundSize = "100% 110%";
+        
+        gameOverScreen = document.createElement('div');
         gameOverScreen.style.display = 'flex';
+        gameOverScreen.classList.add('gameover-screen');
+        // -- titles
+        var playerWinnerDiv = document.createElement('div')
+        playerWinnerDiv.classList.add('player-winner');
+        
+        var playerWinnerTitle = document.createElement('h1');
+        playerWinnerTitle.innerText = 'Player One';
+        playerWinnerDiv.appendChild(playerWinnerTitle);
+        
+        gameOverScreen.appendChild(playerWinnerDiv);
+        
+        var victoryDiv = document.createElement('div');
+        victoryDiv.classList.add('victory');
+        
+        var victoryTitle = document.createElement('h1');
+        victoryTitle.innerText = 'VICTORY!';
+        victoryDiv.appendChild(victoryTitle);
+
+        gameOverScreen.appendChild(victoryDiv);
+        //-- buttons
+        var buttonsOver = document.createElement('div')
+        buttonsOver.classList.add('playagain-button');
+        
+        playAgainButton = document.createElement('button');
+        playAgainButton.innerHTML = 'PlAY AGAIN';
+        buttonsOver.appendChild(playAgainButton);
+        gameOverScreen.appendChild(buttonsOver);
+
+        mainScreen.appendChild(gameOverScreen);
+
         //eveneListener to playAgainButton
         playAgainButton.addEventListener('click', playAgainButtonClick);
     }
-
+    
     function deleteGameOverScreen(){
 
         //remove eventListener from playAgainButton
