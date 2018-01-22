@@ -3,7 +3,7 @@
 function Game(mainScreen){
     var self = this;
 
-    var player;
+    self.player;
     self.mainScreen = mainScreen;
     self.size = 21;
     self.windowHeight = 800;
@@ -11,45 +11,48 @@ function Game(mainScreen){
     self.gameDiv;
 
     self.buildGrid();
-
-    player = new Player(10, 10);
-
-
+    self.init();
 }
 
 Game.prototype.init = function(){
     var self = this;
-    var x = 1; 
-    var y = 1;
 
-    self.handleKeyDown = function(event){
+    var middle = Math.floor(self.size / 2);
+    self.player = new Player(middle, 0, self.gameDiv)
+    
+
+    $(document).keypress(function(e){
+
         
-        var key = event.key.toLowerCase();
-
-        switch (key) {
-            case 'a':
-                player.setDirection('E');
-                break;
-            case 's':
-                player.setDirection('S');
-                break;
-            case 'w':
-                player.setDirection('N');
-                break;
-            case 'd':
-                player.setDirection('W');
-                break;
+        if(e.keyCode === 115){ // capital W
+            
+            self.player.clear();
+            self.player.updateTo('down');
+            self.player.draw();
         }
+        else if (e.keyCode === 97){
+            
+            self.player.clear();
+            self.player.updateTo('left');
+            self.player.draw();
+        }
+        else if (e.keyCode === 100){
+            
+            self.player.clear();
+            self.player.updateTo('right');
+            self.player.draw();
+        }
+        else if (e.keyCode === 119){
 
-    }
-
+            self.player.clear();
+            self.player.updateTo('up');
+            self.player.draw();
+        }
+      });
+    
 }
 
-    function doFrame(){
-        player.update();
-    }
 
-    document.addEventListener('keydown', self.handleKeyDown);
 
 
 Game.prototype.destroy = function(){
