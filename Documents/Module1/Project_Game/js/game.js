@@ -12,19 +12,45 @@ function Game(mainScreen){
 
     self.buildGrid();
 
-    
+    player = new Player(10, 10);
+
+
 }
-    
 
 Game.prototype.init = function(){
+    var self = this;
+    var x = 1; 
+    var y = 1;
 
-    var x; 
-    var y;
+    self.handleKeyDown = function(event){
+        
+        var key = event.key.toLowerCase();
 
-    player = new Player(x, y);
+        switch (key) {
+            case 'a':
+                player.setDirection('E');
+                break;
+            case 's':
+                player.setDirection('S');
+                break;
+            case 'w':
+                player.setDirection('N');
+                break;
+            case 'd':
+                player.setDirection('W');
+                break;
+        }
 
-    
+    }
+
 }
+
+    function doFrame(){
+        player.update();
+    }
+
+    document.addEventListener('keydown', self.handleKeyDown);
+
 
 Game.prototype.destroy = function(){
     var self = this;

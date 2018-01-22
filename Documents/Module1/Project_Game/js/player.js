@@ -6,15 +6,12 @@ function Player(x, y){
     self.x = x;
     self.y = y;
     self.direction = null;
-    
 
 }
 
 Player.prototype.setDirection = function(direction){
     var self = this;
-
     self.direction = direction;
-
 }
 
 Player.prototype.update = function(direction){
@@ -38,5 +35,6 @@ Player.prototype.update = function(direction){
 
     console.log(self.x, self.y);
 }
+
 
 

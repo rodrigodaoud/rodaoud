@@ -90,10 +90,10 @@ function main(){
 
         game = new Game(mainScreen);
 
-        // window.setTimeout(function(){
-        //     deleteGameScreen();
-        //     buildGameOverScreen();
-        // },2000);
+        window.setTimeout(function(){
+            deleteGameScreen();
+            buildGameOverScreen();
+        },5000);
     }
 
     function deleteGameScreen(){
