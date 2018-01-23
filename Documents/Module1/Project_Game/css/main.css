@@ -1,9 +1,4 @@
- .game-column{
-  border: 1px solid white;
-}
-h1{
-  border: 1px solid white;
-}
+
 
 /* ---- reset ---- */
 
@@ -40,7 +35,7 @@ body {
 
 body{
 font-family: 'Digital Gaming';
-background: url('img/source3.gif');
+background: url('img/stars.gif');
 background-repeat: no-repeat;
 background-size: 100% 110%;
 color: white;

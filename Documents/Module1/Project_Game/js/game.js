@@ -5,7 +5,7 @@ function Game(mainScreen){
 
     self.player;
     self.mainScreen = mainScreen;
-    self.size = 21;
+    self.size = 11;
     self.windowHeight = 800;
     self.windowWidth = 800;
     self.gameDiv;
@@ -24,7 +24,7 @@ Game.prototype.init = function(){
     $(document).keypress(function(e){
 
         
-        if(e.keyCode === 115){ // capital W
+        if(e.keyCode === 115){
             
             self.player.clear();
             self.player.updateTo('down');
@@ -59,6 +59,8 @@ Game.prototype.destroy = function(){
     var self = this;
 
     self.gameDiv.remove();
+
+    
 }
 
 Game.prototype.buildGrid = function() {
@@ -82,4 +84,10 @@ Game.prototype.buildGrid = function() {
             gameRow.appendChild(gameColumn);
         }
     }
+
+    gameRow = document.querySelectorAll('.game-row');
+    gameRow[0].style.border = '1px solid #add8e6';
+    gameRow[0].style.borderRadius = '20px'
+    gameRow[self.size -1].style.border = '1px solid #bf0000';
+    gameRow[self.size -1].style.borderRadius = '20px'
 }

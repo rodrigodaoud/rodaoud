@@ -6,7 +6,7 @@ function Player(x, y, containerElement){
     self.y = y;
     self.containerElement = containerElement;
 
-    self.size = 21;
+    self.size = 11;
 
 
 
@@ -26,8 +26,9 @@ Player.prototype.draw = function() {
 
     var cell = self.containerElement.children[self.y].children[self.x];
 
-    cell.style.background = "url('./css/img/chicken.png') no-repeat";
+    cell.style.background = "url('./css/img/ship1.png') no-repeat";
     cell.style.backgroundSize = '100% 100%';
+    cell.style.transform = 'rotate(180deg)';
 
     
 }
@@ -50,6 +51,7 @@ Player.prototype.updateTo = function(direction) {
             break;   
     }
 
+    
     if (self.x > self.size -1) {
         self.x = self.size -1;
       }
@@ -58,8 +60,9 @@ Player.prototype.updateTo = function(direction) {
         self.x = 0;
       }
   
-      if (self.y > self.size -1) {
-        self.y = self.size - 1;
+      if (self.y === self.size -1) {
+        self.containerElement.remove();
+        
       }
   
       if (self.y < 0) {
@@ -68,8 +71,6 @@ Player.prototype.updateTo = function(direction) {
   
 
 }
-
-
 
 Player.prototype.clear = function(){
     var self = this;

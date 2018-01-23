@@ -85,18 +85,20 @@ function main(){
     function buildGameScreen(){
         stage = 'game';
 
-        bodyBackground.style.background = 'black';
+        bodyBackground.style.background = "url('./css/img/stars.gif') no-repeat";
+        bodyBackground.style.backgroundSize = '100% 110%';
 
 
         game = new Game(mainScreen);
 
-        // window.setTimeout(function(){
-        //     deleteGameScreen();
-        //     buildGameOverScreen();
-        // },1000);
+        window.setTimeout(function(){
+            deleteGameScreen();
+            buildGameOverScreen();
+        },1000);
     }
 
     function deleteGameScreen(){
+
         game.destroy();
     }
 
