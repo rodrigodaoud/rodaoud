@@ -90,15 +90,14 @@ function main(){
 
 
         game = new Game(mainScreen);
-
-        window.setTimeout(function(){
+        game.onGameOver(function() {
             deleteGameScreen();
             buildGameOverScreen();
-        },1000);
+        });
+
     }
 
     function deleteGameScreen(){
-
         game.destroy();
     }
 
@@ -117,8 +116,10 @@ function main(){
     function buildGameOverScreen(){
         stage = 'gameOver'
 
-        bodyBackground.style.background = "url('./css/img/source3.gif') no-repeat";
-        bodyBackground.style.backgroundSize = "100% 110%";
+        bodyBackground.style.background = "url('./css/img/trophy.gif') no-repeat";
+        bodyBackground.style.backgroundSize = "20% 20%";
+        bodyBackground.style.backgroundPosition = '50% 40%';
+        bodyBackground.style.backgroundColor = 'black';
         
         gameOverScreen = document.createElement('div');
         gameOverScreen.style.display = 'flex';

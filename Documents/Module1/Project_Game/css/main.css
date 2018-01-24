@@ -1,5 +1,4 @@
 
-
 /* ---- reset ---- */
 
 html {
@@ -29,6 +28,19 @@ body {
 .player-winner{
   font-size: 36px;
   font-family: 'Digital Gaming';
+}
+.combo-display-one h1{
+  letter-spacing: 10px;
+}
+.correct h1{
+  font-size: 50px;
+  text-align: center;
+  color: rgb(142, 245, 142);
+}
+.wrong h1{
+  font-size: 50px;
+  text-align: center;
+  color: rgb(241, 122, 122);
 }
 
 /* ------------------------ layout ------------------------ */
@@ -117,6 +129,22 @@ audio{
 .game-column{
   height: 100%;
 }
+.combo-display-one{
+  position: absolute;
+  top: 0;
+  width: 800px;
+  text-align: center;
+}
+.correct{
+  width: 800px;
+  position: absolute;
+  top: 400px;
+}
+.wrong{
+  width: 800px;
+  position: absolute;
+  top: 400px;
+}
 
 /* ---- GAME OVER SCREEN ---- */
 
@@ -134,4 +162,7 @@ audio{
   font-size: 24px;
   color: yellow;
   margin-bottom: 50px;
+}
+.playagain-button button:hover{
+  cursor: pointer;
 }
